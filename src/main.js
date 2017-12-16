@@ -1,4 +1,5 @@
 const electron = require('electron')
+process.env.EDGE_USE_CORECLR = 1;
 var edge = require('electron-edge-js');
 // Module to control application life.
 const app = electron.app
@@ -28,7 +29,20 @@ function createWindow () {
     typeName: 'Hello.Core.Startup'
   });
    
-
+  helloWorld({
+      url: 'local://v1/programs/is-installed',
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'X-Symc-Fetch-App-Version': '1.0'
+      },
+      body: {
+          displayName: 'Norton Internet Security'
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
