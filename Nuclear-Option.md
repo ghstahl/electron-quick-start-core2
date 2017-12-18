@@ -41,7 +41,7 @@ process.env.EDGE_APP_ROOT = path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Rel
 var edge = require('electron-edge-js');
 // rest of file
 ```
-6. Modified edge.js, because I am a netcoreapp2.0 project.  
+6. Modified .\node_modules\electron-edge-js\lib\edge.js, because I am a netcoreapp2.0 project.  
 ```
 if (process.env.EDGE_USE_CORECLR && !process.env.EDGE_BOOTSTRAP_DIR && fs.existsSync(path.join(__dirname, 'bootstrap', 'bin', 'Release', 'netcoreapp2.0', 'bootstrap.dll'))) {
     process.env.EDGE_BOOTSTRAP_DIR = path.join(__dirname, 'bootstrap', 'bin', 'Release', 'netcoreapp2.0');
