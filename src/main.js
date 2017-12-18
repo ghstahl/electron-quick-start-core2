@@ -1,13 +1,16 @@
 const electron = require('electron')
+const path = require('path')
+const url = require('url')
 process.env.EDGE_USE_CORECLR = 1;
+process.env.EDGE_APP_ROOT = path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Release\\PublishOutput');
+
 var edge = require('electron-edge-js');
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
-const path = require('path')
-const url = require('url')
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -25,10 +28,12 @@ function createWindow () {
   }))
 
   var helloWorld = edge.func({
-    assemblyFile: path.join(__dirname, '\\MEF\\Hello.Core\\bin\\Debug\\netcoreapp2.0\\Hello.Core.dll'),
-    typeName: 'Hello.Core.Startup'
-  });
+    assemblyFile: path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Release\\PublishOutput\\Hello.Core.dll'),
+    typeName: 'Hello.Core.Startup',
+    methodName: 'TestMethod'  //public async Task<object> TestMethod(dynamic input)
+ });
    
+ 
   helloWorld({
       url: 'local://v1/programs/is-installed',
       method: 'GET',

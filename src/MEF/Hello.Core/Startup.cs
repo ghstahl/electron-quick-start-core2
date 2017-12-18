@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -15,7 +16,13 @@ namespace Hello.Core
         {
 
         }
+
         public async Task<object> Invoke(object input)
+        {
+            throw new Exception("no magic entry points allowed!");
+        }
+
+        public async Task<object> TestMethod(object input)
         {
             // this works which make me think that Newtonsoft.Json.dll is loadable either by being somewhere on disk or 
             // because of the nature of the assembly.
