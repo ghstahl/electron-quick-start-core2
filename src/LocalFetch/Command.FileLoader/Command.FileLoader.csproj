@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Command.MEF.Contracts\Command.MEF.Contracts.csproj" />
+    <ProjectReference Include="..\Command.Contracts\Command.Contracts.csproj" />
     <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
   </ItemGroup>
 

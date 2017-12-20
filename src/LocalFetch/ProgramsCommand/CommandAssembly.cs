@@ -1,5 +1,5 @@
 ﻿using System;
-using Command.MEF.Contracts;
+using Command.Contracts;
 using Programs.Repository;
 
 namespace ProgramsCommand

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Command.MEF.Contracts\Command.MEF.Contracts.csproj" />
+    <ProjectReference Include="..\Command.Contracts\Command.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

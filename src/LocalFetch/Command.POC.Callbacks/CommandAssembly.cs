@@ -1,4 +1,4 @@
-﻿using Command.MEF.Contracts;
+﻿using Command.Contracts;
 
 namespace CommandPOCCallbacks
 {
