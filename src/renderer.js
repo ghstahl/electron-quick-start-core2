@@ -16,17 +16,67 @@ var localFetch = edge.func({
     methodName: 'Fetch'
   });
 
-  localFetch({
-    url: 'local://v1/test/hello-there',
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-Symc-Fetch-App-Version': '1.0'
-      },
-      body: {
-          name: 'I am Vader'
-      }
-  }, function(error, result) {
-      if (error) throw error;
-      console.log(result);
-  });
+  
+
+  window.onload = function() {
+
+    localFetch({
+        url: 'local://v1/test/hello-there',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Symc-Fetch-App-Version': '1.0'
+          },
+          body: {
+              name: 'I am Vader'
+          }
+      }, function(error, result) {
+          if (error) throw error;
+          document.getElementById("HelloThere").innerHTML = result.value;
+          console.log(result);
+      });
+      localFetch({
+        url: 'local://v1/test/app-domain',
+        method: 'GET',
+        headers: {
+          },
+          body: {
+          }
+      }, function(error, result) {
+          if (error) throw error;
+          document.getElementById("AppDomain").innerHTML = result.value;
+          console.log(result);
+      });
+      localFetch({
+        url: 'local://v1/test/current-time',
+        method: 'GET',
+        headers: {
+          },
+          body: {
+          }
+      }, function(error, result) {
+          if (error) throw error;
+          document.getElementById("CurrentTime").innerHTML = result.value;
+          console.log(result);
+      });
+    getAppDomainDirectory('', function(error, result) {
+        if (error) throw error;
+        document.getElementById("GetAppDomainDirectory").innerHTML = result;
+    });
+
+    getCurrentTime('', function(error, result) {
+        if (error) throw error;
+        document.getElementById("GetCurrentTime").innerHTML = result;
+    });
+
+    useDynamicInput('Node.Js', function(error, result) {
+        if (error) throw error;
+        document.getElementById("UseDynamicInput").innerHTML = result;
+    });
+
+        getPerson('', function(error, result) {
+            //if (error) throw JSON.stringify(error);
+            document.getElementById("GetPersonInfo").innerHTML = result;
+        });
+
+};

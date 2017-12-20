@@ -2,15 +2,41 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>electron-edge-js Quick Start</title>
+    <link rel="stylesheet" href="default.css">
   </head>
   <body>
     <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-
+    <h3 id="test">Quick start for electron-edge-js module using .NET Core</h3>
+    <div>
+      <!-- All of the Node.js APIs are available in this renderer process. -->
+      We are using Node.js <script>document.write(process.versions.node)</script>,
+      Chromium <script>document.write(process.versions.chrome)</script>,
+      and Electron <script>document.write(process.versions.electron)</script>.
+    </div>
+    <table>
+        <tr>
+            <th style="background: #c4d4e5" colspan="2"><strong>Calling local methods from QuickStart.Core.dll</strong></th>
+        </tr>
+        <tr>
+            <th>Method</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td width="180px">local://v1/test/hello-there</td>
+            <td><pre id="HelloThere"></pre></td>
+        </tr>
+        <tr>
+            <td>local://v1/test/app-domain</td>
+            <td><pre id="AppDomain"></pre></td>
+        </tr>
+        <tr>
+            <td>local://v1/test/current-time</td>
+            <td><pre id="CurrentTime"></pre></td>
+        </tr>
+    </table>
+   
+     
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
