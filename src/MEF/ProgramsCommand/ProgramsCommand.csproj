@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Composition" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
+    <ProjectReference Include="..\Command.MEF.Contracts\Command.MEF.Contracts.csproj" />
+    <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />
+    <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
+  </ItemGroup>
+
+</Project>

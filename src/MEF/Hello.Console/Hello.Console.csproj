@@ -15,7 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fetch.Core\Fetch.Core.csproj" />
     <ProjectReference Include="..\Hello.Core\Hello.Core.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Reference Include="bootstrap">
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp2.0\bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="EdgeJs">
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp2.0\EdgeJs.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
 </Project>

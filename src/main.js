@@ -1,8 +1,10 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
+const baseNetAppPath = path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Debug\\PublishOutput');
+
 process.env.EDGE_USE_CORECLR = 1;
-process.env.EDGE_APP_ROOT = path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Release\\PublishOutput');
+process.env.EDGE_APP_ROOT = baseNetAppPath;
 
 var edge = require('electron-edge-js');
 // Module to control application life.
@@ -28,12 +30,12 @@ function createWindow () {
   }))
 
   var helloWorld = edge.func({
-    assemblyFile: path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Release\\PublishOutput\\Hello.Core.dll'),
-    typeName: 'Hello.Core.Startup',
-    methodName: 'TestMethod'  //public async Task<object> TestMethod(dynamic input)
- });
-   
- 
+    assemblyFile: path.join(baseNetAppPath, 'Fetch.Core.dll'),
+    typeName: 'Fetch.Core.Local',
+    methodName: 'Fetch'
+  });
+
+
   helloWorld({
       url: 'local://v1/programs/is-installed',
       method: 'GET',
