@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
-    <ProjectReference Include="..\Command.MEF.Common\Command.MEF.Common.csproj" />
     <ProjectReference Include="..\Command.MEF.Contracts\Command.MEF.Contracts.csproj" />
     <ProjectReference Include="..\Programs.Models\Programs.Models.csproj" />
     <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />

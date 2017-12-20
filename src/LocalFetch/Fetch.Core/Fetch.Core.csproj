@@ -21,7 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
     <ProjectReference Include="..\Command.FileLoader\Command.FileLoader.csproj" />
-    <ProjectReference Include="..\Command.MEF.Common\Command.MEF.Common.csproj" />
     <ProjectReference Include="..\Command.MEF.Contracts\Command.MEF.Contracts.csproj" />
     <ProjectReference Include="..\Command.POC.Callbacks\Command.POC.Callbacks.csproj" />
     <ProjectReference Include="..\Programs.Models\Programs.Models.csproj" />

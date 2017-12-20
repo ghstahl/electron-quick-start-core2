@@ -1,7 +1,7 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
-const baseNetAppPath = path.join(__dirname, '\\MEF\\Hello.Console\\bin\\Debug\\PublishOutput');
+const baseNetAppPath = path.join(__dirname, '\\LocalFetch\\Hello.Console\\bin\\Debug\\PublishOutput');
 
 process.env.EDGE_USE_CORECLR = 1;
 process.env.EDGE_APP_ROOT = baseNetAppPath;

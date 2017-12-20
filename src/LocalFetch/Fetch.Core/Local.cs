@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Command.MEF.Common;
+using Command.Common;
 using Command.MEF.Contracts;
 
 using Newtonsoft.Json;

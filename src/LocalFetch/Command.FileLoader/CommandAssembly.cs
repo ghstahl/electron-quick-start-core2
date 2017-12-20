@@ -1,11 +1,9 @@
-﻿using System.Composition;
-using Command.MEF.Contracts;
+﻿using Command.MEF.Contracts;
 
 namespace CommandFileLoader
 {
-    [Export(typeof(ICommandAssembly))]
-    [CommandAssembly(Name = "FileLoader")]
-    public class MyCommandAssembly : ICommandAssembly
+    [CommandAssembly(AssemblyType = typeof(CommandAssembly))]
+    public class CommandAssembly : ICommandAssembly
     {
         public void Initialize()
         {

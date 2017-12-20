@@ -1,10 +1,8 @@
-﻿using System.Composition;
-using Command.MEF.Contracts;
+﻿using Command.MEF.Contracts;
 
 namespace CommandPOCCallbacks
 {
-    [Export(typeof(ICommandAssembly))]
-    [CommandAssembly(Name = "Command.POC.Callbacks")]
+    [CommandAssembly(AssemblyType = typeof(CommandAssembly))]
     public class CommandAssembly : ICommandAssembly
     {
         public void Initialize()

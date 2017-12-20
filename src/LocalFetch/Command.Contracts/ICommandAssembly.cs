@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Command.MEF.Contracts
 {
@@ -23,7 +24,9 @@ namespace Command.MEF.Contracts
             ShowOnChart = true;
         }
 
-        public string Name { get; set; }
+        public Type AssemblyType { get; set; }
+        public  string Name { get { return Assembly.GetAssembly(AssemblyType).FullName; } }
+       // public string Name { get; set; }
         public int Order { get; set; }
         public bool ShowOnChart { get; set; }
         public string DisplayLabel { get; set; }

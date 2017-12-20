@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Composition;
 using Command.MEF.Contracts;
 using Programs.Repository;
 
 namespace ProgramsCommand
 {
-    [Export(typeof(ICommandAssembly))]
-    [CommandAssembly(Name = "ProgramsCommand")]
+    [CommandAssembly(AssemblyType=typeof(CommandAssembly))]
     public class CommandAssembly : ICommandAssembly
     {
         public void Initialize()
