@@ -50,6 +50,76 @@ function createWindow () {
       if (error) throw error;
       console.log(result);
   });
+  localFetch({
+    url: 'local://v1/test/hello-there',
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-Symc-Fetch-App-Version': '1.0'
+      },
+      body: {
+          name: 'I am Vader'
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
+  localFetch({
+    url: 'local://v1/test/app-domain',
+    method: 'GET',
+    headers: {
+      },
+      body: {
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
+  localFetch({
+    url: 'local://v1/test/current-time',
+    method: 'GET',
+    headers: {
+      },
+      body: {
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
+
+  localFetch({
+    url: 'local://v1/test/return-false',
+    method: 'GET',
+    headers: {
+      },
+      body: {
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
+  localFetch({
+    url: 'local://v1/test/return-true',
+    method: 'GET',
+    headers: {
+      },
+      body: {
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
+  localFetch({
+    url: 'local://v1/test/does-not-exit',
+    method: 'GET',
+    headers: {
+      },
+      body: {
+      }
+  }, function(error, result) {
+      if (error) throw error;
+      console.log(result);
+  });
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
