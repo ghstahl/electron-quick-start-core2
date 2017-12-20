@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Reflection\**" />
-    <EmbeddedResource Remove="Reflection\**" />
-    <None Remove="Reflection\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="2.6.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
@@ -26,7 +21,6 @@
     <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />
     <ProjectReference Include="..\ProgramsCommand\ProgramsCommand.csproj" />
     <ProjectReference Include="..\SimpleCommands\SimpleCommands.csproj" />
-    <ProjectReference Include="..\Some.Library\Some.Library.csproj" />
     <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
   </ItemGroup>
   <ItemGroup>

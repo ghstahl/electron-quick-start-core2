@@ -29,14 +29,14 @@ function createWindow () {
     slashes: true
   }))
 
-  var helloWorld = edge.func({
+  var localFetch = edge.func({
     assemblyFile: path.join(baseNetAppPath, 'Fetch.Core.dll'),
     typeName: 'Fetch.Core.Local',
     methodName: 'Fetch'
   });
 
 
-  helloWorld({
+  localFetch({
       url: 'local://v1/programs/is-installed',
       method: 'GET',
       headers: {
