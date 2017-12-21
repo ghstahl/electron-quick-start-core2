@@ -2,26 +2,13 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-const path = require('path');
-const baseNetAppPath = path.join(__dirname, '\\LocalFetch\\Hello.Console\\bin\\Debug\\PublishOutput');
-
-process.env.EDGE_USE_CORECLR = 1;
-process.env.EDGE_APP_ROOT = baseNetAppPath;
-
-var edge = require('electron-edge-js');
-
-var localFetch = edge.func({
-    assemblyFile: path.join(baseNetAppPath, 'Fetch.Core.dll'),
-    typeName: 'Fetch.Core.Local',
-    methodName: 'Fetch'
-});
-
+const LocalFetch = require('./local-fetch')
+let localFetch = (new LocalFetch()).localFetch;
 
 
 window.onload = function() {
 
-    localFetch({
-        url: 'local://v1/test/hello-there',
+    localFetch('local://v1/test/hello-there', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -30,31 +17,34 @@ window.onload = function() {
         body: {
             name: 'I am Vader'
         }
-    }, function(error, result) {
-        if (error) throw error;
+    }).then((result) => {
         document.getElementById("HelloThere").innerHTML = result.value;
         console.log(result);
+    }).catch((e) => {
+        console.log(e);
     });
-    localFetch({
-        url: 'local://v1/test/app-domain',
+    localFetch('local://v1/test/app-domain', {
         method: 'GET',
         headers: {},
         body: {}
-    }, function(error, result) {
-        if (error) throw error;
+    }).then((result) => {
         document.getElementById("AppDomain").innerHTML = result.value;
         console.log(result);
+    }).catch((e) => {
+        console.log(e);
     });
-    localFetch({
-        url: 'local://v1/test/current-time',
+
+    localFetch('local://v1/test/current-time', {
         method: 'GET',
         headers: {},
         body: {}
-    }, function(error, result) {
-        if (error) throw error;
+    }).then((result) => {
         document.getElementById("CurrentTime").innerHTML = result.value;
         console.log(result);
+    }).catch((e) => {
+        console.log(e);
     });
+
 
 
 };

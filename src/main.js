@@ -3,12 +3,6 @@ const path = require('path')
 const url = require('url')
 const LocalFetch = require('./local-fetch')
 
-const baseNetAppPath = path.join(__dirname, '\\LocalFetch\\Hello.Console\\bin\\Debug\\PublishOutput');
-
-process.env.EDGE_USE_CORECLR = 1;
-process.env.EDGE_APP_ROOT = baseNetAppPath;
-
-var edge = require('electron-edge-js');
 // Module to control application life.
 const app = electron.app
     // Module to create native browser window.
@@ -33,12 +27,6 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
     }))
-
-    var localFetch = edge.func({
-        assemblyFile: path.join(baseNetAppPath, 'Fetch.Core.dll'),
-        typeName: 'Fetch.Core.Local',
-        methodName: 'Fetch'
-    });
 
     app.localFetch('local://v1/programs/is-installed', {
         method: 'GET',
