@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
     <ProjectReference Include="..\Command.FileLoader\Command.FileLoader.csproj" />
     <ProjectReference Include="..\Command.POC.Callbacks\Command.POC.Callbacks.csproj" />
+    <ProjectReference Include="..\P7.GraphQLCore\P7.GraphQLCore.csproj" />
     <ProjectReference Include="..\Programs.Models\Programs.Models.csproj" />
     <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />
     <ProjectReference Include="..\ProgramsCommand\ProgramsCommand.csproj" />

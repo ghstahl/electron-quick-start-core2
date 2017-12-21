@@ -17,27 +17,30 @@ namespace Command.Common
             {
                 if (_commandAssemblyTypes == null)
                 {
-                    LoadCommandAssemblyTypes();
+                    LoadCommandAssemblyTypesByAttributeByInteface<CommandAssemblyAttribute, ICommandAssembly>(EntryAssembly);
                 }
 
                 return _commandAssemblyTypes.ToList();
             }
         }
 
-        private static void LoadCommandAssemblyTypes()
+        private static void LoadCommandAssemblyTypesByAttributeByInteface<TCustomAttribute, TInterface>(Assembly entryAssembly) 
+            where TCustomAttribute: Attribute
+            
         {
             if (_commandAssemblyTypes != null)
             {
                 return;
             }
-            var refAss = GetReferencingAssemblies(EntryAssembly);
+            var refAss = GetReferencingAssemblies(entryAssembly);
             var calcs = from a in refAss
                         from t in a.GetTypes()
-                where t.GetTypeInfo().GetCustomAttribute<CommandAssemblyAttribute>() != null
-                      && t.GetTypeInfo().ImplementedInterfaces.Contains(typeof(ICommandAssembly))
+                where t.GetTypeInfo().GetCustomAttribute<TCustomAttribute>() != null
+                      && t.GetTypeInfo().ImplementedInterfaces.Contains(typeof(TInterface))
                 select t;
-
-            _commandAssemblyTypes = calcs.OrderBy(t => t.GetTypeInfo().GetCustomAttribute<CommandAssemblyAttribute>().Order).ToList();
+            _commandAssemblyTypes = calcs.ToList();
+//            _commandAssemblyTypes = calcs
+//                .OrderBy(t => t.GetTypeInfo().GetCustomAttribute<TCustomAttribute>().Order).ToList();
         }
 
         private static IEnumerable<Assembly> GetReferencingAssemblies(Assembly entryAssembly)

@@ -20,12 +20,14 @@ namespace Fetch.Core
 
             if (CommandCompositionHelper == null)
             {
+                P7.GraphQLCore.Global.EntryAssembly = Assembly.GetAssembly(typeof(Local));
+                CommandAssemblysLoader.EntryAssembly = Assembly.GetAssembly(typeof(Local));
+
                 Anchors.Add(ProgramsCommand.Anchor.FullName);
                 Anchors.Add(CommandFileLoader.Anchor.FullName);
                 Anchors.Add(CommandPOCCallbacks.Anchor.FullName);
                 Anchors.Add(SimpleCommands.Anchor.FullName);
 
-                CommandAssemblysLoader.EntryAssembly = Assembly.GetAssembly(typeof(Local));
     //            var dd = ProgramsCommand.Anchor.Name;
                 var root = Assembly.GetAssembly(typeof(Local)).Location;
                 var dir = Path.GetDirectoryName(root);
