@@ -1,5 +1,11 @@
 [electron-edge-js issue](https://github.com/agracio/electron-edge-js/issues/4)  
 
+I have found some issues that I have yet been able to explain.
+1. Loading Fetch.Core.dll from the Fetch.Core project bin folder works, but when I attach to electron from the debugger I can't set breakpoints that get hit. 
+2. Loading Fetch.Core.dll from the Hello.Console PublishOutput works, but this time when I attatch the debugger my breakpoints get hit. 
+3. When I use System.Composition, i.e. MEF, it works with all my unit test.  However when Fetch.Core.dll is loaded from electron it can't find any objects.  I had to roll my own Reflection find to get over this hump.  I still want to use MEF, so I will visit this later.  
+
+
 # Nuclear Option: Everything in one directory experiment
 
 1. I created a Hello.Console, just so I could use "Publish to Folder"
