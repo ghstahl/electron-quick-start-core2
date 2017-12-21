@@ -2,7 +2,7 @@
 
 ```
 Visual Studio 2017
-build electron-quick-start-core2\src\MEF\Hello.Core.sln
+build electron-quick-start-core2\src\LocalFetch\LocalFetch.sln
 ```
 [Nuclear Option Required](Nuclear-Option.md)
 
