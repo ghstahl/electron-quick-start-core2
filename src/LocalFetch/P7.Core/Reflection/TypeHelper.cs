@@ -52,7 +52,7 @@ namespace P7.Core.Reflection
                         type.IsPublicClass() &&
                         (predicate(type) || (!includeSubClass || IsSubclassOf(type))));
         }
-        private static IEnumerable<Assembly> GetReferencingAssemblies(Assembly entryAssembly)
+        public static IEnumerable<Assembly> GetReferencingAssemblies(Assembly entryAssembly)
         {
 
             var assemblies = entryAssembly.GetReferencedAssemblies();

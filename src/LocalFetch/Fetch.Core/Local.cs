@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Autofac;
 using Command.Common;
 using Newtonsoft.Json;
+using P7.Core.Reflection;
+using Serilog;
 using Synoptic;
  
 
@@ -15,20 +19,35 @@ namespace Fetch.Core
     {
         public static CommandCompositionHelper CommandCompositionHelper { get; set; }
         public static List<string> Anchors => new List<string>();
+        public static IContainer TheContainer { get; set; }
         public void Initialize()
         {
 
             if (CommandCompositionHelper == null)
             {
-                P7.GraphQLCore.Global.EntryAssembly = Assembly.GetAssembly(typeof(Local));
-                CommandAssemblysLoader.EntryAssembly = Assembly.GetAssembly(typeof(Local));
-
                 Anchors.Add(ProgramsCommand.Anchor.FullName);
                 Anchors.Add(CommandFileLoader.Anchor.FullName);
                 Anchors.Add(CommandPOCCallbacks.Anchor.FullName);
                 Anchors.Add(SimpleCommands.Anchor.FullName);
+                Anchors.Add(CommandGraphQL.Anchor.FullName);
 
-    //            var dd = ProgramsCommand.Anchor.Name;
+                P7.GraphQLCore.Global.EntryAssembly = Assembly.GetAssembly(typeof(Local));
+                CommandAssemblysLoader.EntryAssembly = P7.GraphQLCore.Global.EntryAssembly;
+
+                var builder = new ContainerBuilder();
+
+                // Register individual components
+                var assemblies = TypeHelper<Local>.GetReferencingAssemblies(P7.GraphQLCore.Global.EntryAssembly);
+                builder.RegisterAssemblyModules(assemblies.ToArray());
+
+                TheContainer = builder.Build();
+                CommandGraphQL.GraphQLCommands.TheContainer = TheContainer;
+
+
+
+
+
+                //            var dd = ProgramsCommand.Anchor.Name;
                 var root = Assembly.GetAssembly(typeof(Local)).Location;
                 var dir = Path.GetDirectoryName(root);
                 var components = dir;
