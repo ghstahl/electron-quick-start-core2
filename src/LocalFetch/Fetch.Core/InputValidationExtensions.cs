@@ -19,7 +19,8 @@ namespace Fetch.Core
         }
         public static void ValidateMethod(this string stringToCheck)
         {
-            var valid = AllowedMethods.Any(stringToCheck.Contains);
+            var temp = stringToCheck.ToUpper();
+            var valid = AllowedMethods.Any(temp.Contains);
 
             if (!valid)
             {
