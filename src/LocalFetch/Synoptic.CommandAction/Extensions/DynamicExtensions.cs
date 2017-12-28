@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Synoptic.Extensions
 {
@@ -40,9 +41,20 @@ namespace Synoptic.Extensions
             {
                 var key = item.Key.ToPascalCase();
                 var property = someObjectType.GetProperty(key);
+                var isExpando = item.Value.GetType() == typeof(System.Dynamic.ExpandoObject);
                 if (property != null)
                 {
-                    property.SetValue(someObject, item.Value, null);
+
+                    if (property.PropertyType == typeof(string) && isExpando)
+                    {
+                        var svalue = JsonConvert.SerializeObject(item.Value);
+                        property.SetValue(someObject, svalue, null);
+                    }
+                    else
+                    {
+                        property.SetValue(someObject, item.Value, null);
+                    }
+                  
                 }
             }
 
