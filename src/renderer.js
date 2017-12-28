@@ -18,7 +18,7 @@ window.onload = function() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: {
-            query: 'query q($id: String!,$treatment: String!,$culture: String!){echo(input: { id: $id, treatment: $treatment,culture: $culture  })}',
+            query: 'query q($id: String!, $treatment: String!, $culture: String!) {echo(input: {id: $id, treatment: $treatment, culture: $culture}) {id treatment culture}}',
             variables: '{"id": "P7.Main.Resources.Main,P7.Main","treatment":"kva","culture":"fr-FR"}',
             operationName: 'q'
         }
