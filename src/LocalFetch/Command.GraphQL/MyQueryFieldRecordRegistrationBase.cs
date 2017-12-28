@@ -16,7 +16,7 @@ namespace CommandGraphQL
         {
             var fieldName = "echo";
 
-            var fieldType = queryCore.FieldAsync<StringGraphType>(name: fieldName,
+            var fieldType = queryCore.FieldAsync<VersionQueryOutput>(name: fieldName,
                 description: null,
                 arguments: new QueryArguments(new QueryArgument<VersionQueryInput> { Name = "input" }),
                 resolve: async context =>

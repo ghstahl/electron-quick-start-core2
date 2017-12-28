@@ -9,9 +9,19 @@ namespace CommandGraphQL
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<VersionQueryInput>();
-
+            builder.RegisterType<VersionQueryOutput>();
             builder.RegisterType<GraphQLRequestHandler>()
                 .SingleInstance();
+        }
+    }
+    public class VersionQueryOutput : ObjectGraphType
+    {
+        public VersionQueryOutput()
+        {
+            Name = "VersionQueryOutput";
+            Field<NonNullGraphType<StringGraphType>>("id");
+            Field<NonNullGraphType<StringGraphType>>("treatment");
+            Field<StringGraphType>("culture");
         }
     }
     public class VersionQueryInput : InputObjectGraphType
