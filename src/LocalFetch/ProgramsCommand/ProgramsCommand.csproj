@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
+    <ProjectReference Include="..\P7.GraphQLCore\P7.GraphQLCore.csproj" />
     <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />
     <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
   </ItemGroup>
