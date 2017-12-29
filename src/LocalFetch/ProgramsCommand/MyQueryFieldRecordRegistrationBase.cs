@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System.Collections.Generic;
+using System.Dynamic;
 using CommandGraphQL;
 using GraphQL.Types;
 using P7.GraphQLCore;
@@ -29,6 +30,26 @@ namespace ProgramsCommand
                     {
                         DisplayName = input.DisplayName,
                         IsInstalled = result.Result.Value
+                    };
+                    return final;
+                },
+                deprecationReason: null);
+            fieldName = "installedApps";
+
+            fieldType = queryCore.FieldAsync<InstalledPageType>(name: fieldName,
+                description: null,
+                arguments: new QueryArguments(new QueryArgument<ProgramPageQueryInput> { Name = "input" }),
+                resolve: async context =>
+                {
+                    var input = context.GetArgument<PageQuery>("input");
+                    var programs = new Programs();
+                    var result = programs.GetPage(input);
+                    var final = new InstalledPage()
+                    {
+                         Count = result.Length,
+                         NextOffset = input.Offset + input.Count,
+                         CurrentOffset = input.Offset,
+                         InstalledApps = new List<InstalledApp>(result)
                     };
                     return final;
                 },
